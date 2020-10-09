@@ -260,24 +260,6 @@ function Menu(props) {
     );
 
     return (
-        //new menu layout
-        // <div className="menu-grid">
-        //     <div className="logo">
-        //         <img alt='' className="logo-image" src={image}/>
-        //         <p className="logo-title">Complaint Management System</p>
-        //     </div>
-        //
-        //     <div className="menu-list">
-        //         <p>Home</p>
-        //         <p>Home</p>
-        //         <p>Home</p>
-        //         <p>Home</p>
-        //         <p>Home</p>
-        //
-        //     </div>
-        // </div>
-
-        //old menu layout
 
         <div className="menu">
             {isDesktop ? (

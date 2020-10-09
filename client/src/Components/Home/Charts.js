@@ -149,7 +149,7 @@ function Charts(props) {
                 highestValueYearly:
                     Math.max.apply(null, allData.totalCountResultYearly) + 10,
             });
-            // console.log("highest value arhi hai", highestValue.highestValueDaily);
+            // console.log("highest value is coming", highestValue.highestValueDaily);
         } else if (props.value === "Resolved") {
             setWhichType({
                 seriesDaily: allData.resolvedResultDaily,
@@ -249,7 +249,7 @@ function Charts(props) {
                 tension: 0,
             }),
             low: 0,
-            high: highestValue.highestValueDaily, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            high: highestValue.highestValueDaily,
             chartPadding: {
                 top: 0,
                 right: 0,
@@ -359,7 +359,7 @@ function Charts(props) {
                 tension: 10,
             }),
             low: 0,
-            high: highestValue.highestValueYearly, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            high: highestValue.highestValueYearly,
             chartPadding: {
                 top: 0,
                 right: 0,

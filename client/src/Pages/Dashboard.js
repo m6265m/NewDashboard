@@ -221,7 +221,6 @@ function Dashboard({ match }) {
 
   // console.log(userData);
   function sentTokenToServer(Ntoken) {
-    //console.log("userrrrrr?????", userData.accessToken);
 
     axios
       .post(

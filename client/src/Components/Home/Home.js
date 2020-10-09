@@ -105,22 +105,6 @@ function Home(props) {
     const handleChange = (event) => {
         event.preventDefault();
         setChartType(event.target.value)
-
-        // let type = event.target.value;
-
-        // if (type === "Total Complaints") {
-        //     setChartType(type);
-        // } else if (type === "Resolved") {
-        //     setChartType(type);
-        // } else if (type === "Unresolved") {
-        //     setChartType(type);
-        // } else if (type === "Assigned") {
-        //     setChartType(type);
-        // } else if (type === "Rejected") {
-        //     setChartType(type);
-        // } else if (type === "Active") {
-        //     setChartType(type);
-        // }
     };
 
     const getHomeData = () => {
