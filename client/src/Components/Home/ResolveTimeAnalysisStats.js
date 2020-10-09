@@ -69,6 +69,7 @@ function ResolveTimeAnalysisStats() {
 
                     }
                 }
+                setResolveTimeCheck(1);
                 console.error(err);
             });
     }, [resolveTime]);

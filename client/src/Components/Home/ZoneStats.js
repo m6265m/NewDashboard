@@ -77,6 +77,7 @@ function ZoneStats() {
                         }
                     }
 
+                    setZoneCheck(1)
                     console.error(err);
                 });
         }

@@ -124,6 +124,7 @@ function Charts(props) {
                             setCheckCharts(1)
                         }
                     }
+                    setCheckCharts(1)
                     console.error(err);
                 });
         }

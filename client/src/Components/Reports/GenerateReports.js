@@ -223,6 +223,9 @@ function GenerateReports(props) {
                         setLoading(false);
                         props.handleError(err.response.status);
                     }
+                    setLoading(false);
+                    console.log("CORS error.")
+                    props.handleError(err.response.status);
                 }
 
             });

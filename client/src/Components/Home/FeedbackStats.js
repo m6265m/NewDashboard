@@ -65,6 +65,7 @@ function FeedbackStats(props) {
 
                     }
                 }
+                setCheckFeedback(1);
                 console.error(err);
             });
     }, [feedback]);

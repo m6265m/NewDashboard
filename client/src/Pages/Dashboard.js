@@ -329,7 +329,7 @@ function Dashboard({ match }) {
   let dropdownNotifications = [];
   useEffect(() => {
     if (userData.accessToken !== null) {
-      console.log("headers" + JSON.stringify(headers));
+      // console.log("headers" + JSON.stringify(headers));
       axios
         .get("https://m2r31169.herokuapp.com/api/dashboard/getNotifications", {
           headers: headers,
