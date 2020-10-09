@@ -159,7 +159,7 @@ function Home(props) {
 
     useEffect(() => {
         getHomeData()
-    }, [userData.accessToken, props.notifs]);
+    }, [userData.accessToken, props.notifs,counts]);
 
     // console.log("dropdown", dropdown)
     // console.log("time", lastUpdatedState)

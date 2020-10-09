@@ -71,7 +71,7 @@ function ResolveTimeAnalysisStats() {
                 }
                 console.error(err);
             });
-    }, []);
+    }, [resolveTime]);
 
     const piechart = {
         data: {

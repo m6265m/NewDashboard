@@ -81,7 +81,7 @@ function ZoneStats() {
                 });
         }
         // console.log("HIGH!!", Math.max.apply(null, allData.HighestCountState));
-    }, []);
+    }, [allData]);
 
     let delays2 = 80,
         durations2 = 500;

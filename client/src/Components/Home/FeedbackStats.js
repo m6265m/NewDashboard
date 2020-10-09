@@ -67,7 +67,7 @@ function FeedbackStats(props) {
                 }
                 console.error(err);
             });
-    }, []);
+    }, [feedback]);
 
     // console.log("feedbacks coming", feedback);
 
