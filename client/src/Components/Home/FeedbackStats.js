@@ -139,7 +139,7 @@ function FeedbackStats(props) {
                             fontSize="0.75rem"
                         >
                             {" "}
-                            Positiveeeee
+                            Positive
                         </Box>
 
                         <Box
