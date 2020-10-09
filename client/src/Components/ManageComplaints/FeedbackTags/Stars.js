@@ -25,7 +25,7 @@ export default function FeedbackTags(props) {
     console.log("iteemmmmmmmmmmmmm" + id, yes);
     axios
       .post(
-        "http://m2r31169.herokuapp.com/api/addTagToStar",
+        "https://m2r31169.herokuapp.com/api/addTagToStar",
         { tagId: item.id, starId: id },
         {
           headers: {
@@ -57,7 +57,7 @@ export default function FeedbackTags(props) {
     console.log("iteemmmmmmmmmmmmm" + id, yes);
     axios
       .post(
-        "http://m2r31169.herokuapp.com/api/deleteTagOfStar",
+        "https://m2r31169.herokuapp.com/api/deleteTagOfStar",
         { tagId: item.id, starId: id },
         {
           headers: {

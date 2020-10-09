@@ -55,7 +55,7 @@ export default function FeedbackTags(props) {
     console.log("iteemmmmmmmmmmmmm" + it);
     axios
       .post(
-        "http://m2r31169.herokuapp.com/api/deleteFeedbackTag",
+        "https://m2r31169.herokuapp.com/api/deleteFeedbackTag",
         { tagId: it },
         {
           headers: {
@@ -90,7 +90,7 @@ export default function FeedbackTags(props) {
     } else {
       axios
         .post(
-          "http://m2r31169.herokuapp.com/api/addFeedbackTag",
+          "https://m2r31169.herokuapp.com/api/addFeedbackTag",
           { tag: newTag },
           {
             headers: {

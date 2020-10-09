@@ -862,8 +862,7 @@ export default function Supervisors() {
               </Grid>
             </Grid>
           </Paper>
-          {/*
-          <Scrollbars style={{ minWidth: 100, minHeight: 370 }}> */}
+
           <Paper className="elevationPaper1">
             <TableContainer className="tableContainer">
               <Table
@@ -902,111 +901,25 @@ export default function Supervisors() {
                           handleDelete={handleDelete}
                         />
                       );
-                      // return (
-                      // <TableRow
-                      //   className="tableRow"
-                      //   hover
-                      //   role="checkbox"
-                      //   tabIndex={-1}
-                      //   key={row.supervisorId}
-                      // >
-                      //     <TableCell
-                      //       component="th"
-                      //       id={labelId}
-                      //       scope="row"
-                      //       style={{
-                      //         paddingLeft: "16px",
-                      //         paddingRight: "4px",
-                      //       }}
-                      //     >
-                      //       <Avatar
-                      //         className="gridd"
-                      //         alt="Remy Sharp"
-                      //         src={row.image}
-                      //         className={classes._theme}
-                      //       >
-                      //         {res}
-                      //       </Avatar>{" "}
-                      //     </TableCell>
-                      //     <TableCell
-                      //       align="left"
-                      //       style={{
-                      //         paddingLeft: "2px",
-                      //         paddingRight: "16px",
-                      //       }}
-                      //     >
-                      //       {row.name}
-                      //     </TableCell>
-                      //     <TableCell align="center">{row.Resolved}</TableCell>
-                      //     <TableCell align="center">{row.Active}</TableCell>
-                      //     <TableCell align="center">{row.Unresolved}</TableCell>
-                      //     <TableCell align="center">{row.Rejected}</TableCell>
-                      //     <TableCell align="left">{row.email}</TableCell>
-                      //     <TableCell align="left">{row.phoneNumber}</TableCell>
-                      //     <TableCell align="left">{row.town}</TableCell>
-                      //     <TableCell
-                      //       align="left"
-                      //       style={{
-                      //         paddingLeft: "3px",
-                      //         paddingRight: "3px",
-                      //       }}
-                      //     >
-                      //       <EditDialog
-                      //         town={towns}
-                      //         rowData={row}
-                      //         onUpdate={handleUpdatedTown}
-                      //       ></EditDialog>{" "}
-                      //     </TableCell>{" "}
-                      //     <TableCell
-                      //       align="left"
-                      //       style={{
-                      //         paddingLeft: "3px",
-                      //         paddingRight: "16px",
-                      //       }}
-                      //     >
-                      //       <IconButton
-                      //         style={{ backgroundColor: "transparent" }}
-                      //       >
-                      //         <DeleteIcon
-                      //           onClick={handleDelete(row.supervisorId)}
-                      //           style={{
-                      //             color: "#008080",
-                      //             fontSize: "20px",
-                      //             padding: 0,
-                      //             border: 0,
-                      //           }}
-                      //         />
-                      //       </IconButton>
-                      //     </TableCell>
-                      //     <TableCell
-                      //       align="left"
-                      //       style={{
-                      //         paddingLeft: "3px",
-                      //         paddingRight: "3px",
-                      //       }}
-                      //     >
-                      //       {" "}
-                      //     </TableCell>
-                      //   </TableRow>
-                      // );
                     })}
                 </TableBody>
               </Table>
             </TableContainer>
           </Paper>
-          {/* </Scrollbars> */}
+
           {/* <Paper
             className="filter elevationPaper"
             style={{
               position: "-webkit-sticky",
               position: "sticky",
-              top: "300px",
+              borderRadius: "0px 0px 20px 20px",
               bottom: 0,
               zIndex: 1,
+              padding: "none",
             }}
           > */}
           <TablePagination
-            style={{}}
+            style={{ bottom: 0 }}
             rowsPerPageOptions={[10, 15, 30]}
             component="div"
             count={rows.length}

@@ -146,7 +146,7 @@ export default function Type(props) {
   const changeStatus = (id) => {
     axios
       .post(
-        "http://m2r31169.herokuapp.com/api/enableDisableComplaintType",
+        "https://m2r31169.herokuapp.com/api/enableDisableComplaintType",
         { id: id },
         {
           headers: {

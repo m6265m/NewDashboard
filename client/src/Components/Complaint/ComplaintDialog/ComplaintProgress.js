@@ -45,8 +45,9 @@ export default function ComplaintProgress(props) {
   };
 
   const handleSaveClose = (statusOfId, StatusId, ComplainId, supervisorId) => {
-    console.log("wahan", StatusId, statusOfId, supervisor);
-    if (role == "Supervisor" && statusOfId == "Resolved" && newImage == null) {
+    console.log("wahan", StatusId, statusOfId, supervisor, newImage, role);
+    if (role == "SUPERVISOR" && statusOfId == "Resolved" && newImage == null) {
+      console.log("error show");
       setError("Choose an image");
     } else if (statusOfId == "Assigned" && supervisor == null) {
       setError("Choose a supervisor");

@@ -99,7 +99,7 @@ function Profile(props) {
       "+92" + phoneNumber.slice(-10) !=
       userData.userData.phoneNumber
     ) {
-      console.log("lalal" + phoneNumber, fullName, email);
+      //console.log("lalal" + phoneNumber, fullName, email);
       update("+92" + phoneNumber.slice(-10), "phoneNumber", "phoneNumber");
     } else setLoading(false);
   };
@@ -107,7 +107,7 @@ function Profile(props) {
   const onPhotoRemove = () => {
     axios
       .post(
-        "http://m2r31169.herokuapp.com/api/removeProfilePicture",
+        "https://m2r31169.herokuapp.com/api/removeProfilePicture",
         {},
 
         {

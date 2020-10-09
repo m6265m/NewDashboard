@@ -186,6 +186,7 @@ function Dashboard({ match }) {
       // setOpen(false);
       window.location = `/dashboard/complaints?complainIdOpen=${complainId}`;
     } else {
+      console.log("headers" + headers);
       axios
         .post(
           `https://m2r31169.herokuapp.com/api/dashboard/openNotification`,
@@ -245,7 +246,7 @@ function Dashboard({ match }) {
             err.response.status === 500
           ) {
             console.log(err.response.status);
-            handleServerError(err.response.status);
+            // handleServerError(err.response.status);
           }
         }
       });
@@ -328,6 +329,7 @@ function Dashboard({ match }) {
   let dropdownNotifications = [];
   useEffect(() => {
     if (userData.accessToken !== null) {
+      console.log("headers" + JSON.stringify(headers));
       axios
         .get("https://m2r31169.herokuapp.com/api/dashboard/getNotifications", {
           headers: headers,
@@ -352,7 +354,7 @@ function Dashboard({ match }) {
               err.response.status === 503 ||
               err.response.status === 500
             ) {
-              console.log(err.response.status);
+              console.log("error header" + err.response.status);
               handleServerError(err.response.status);
             }
           }
