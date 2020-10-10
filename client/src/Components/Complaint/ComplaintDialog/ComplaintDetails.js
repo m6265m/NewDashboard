@@ -15,9 +15,9 @@ export default function ComplaintDetails(props) {
 
   //location api
 
-  // useEffect(() => {
-  //   getLocation(sel.longitude, sel.latitude);
-  // }, []);
+  useEffect(() => {
+    getLocation(sel.longitude, sel.latitude);
+  }, []);
   const getLocation = (long, lat) => {
     const key = "64cbb3fee6954e";
 
