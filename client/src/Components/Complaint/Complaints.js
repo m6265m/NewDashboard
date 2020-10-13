@@ -69,7 +69,6 @@ function stableSort(array, comparator) {
 
     return a[1] - b[1];
   });
-  //console.log("ssssssssssssssss" +JSON.stringify(stabilizedThis));
   return stabilizedThis.map((el) => el[0]);
 }
 
@@ -238,11 +237,8 @@ export default function Complaints(props) {
         },
       })
       .then((res) => {
-        console.log(
-          "supervisor yrrrr" + JSON.stringify(res.data.supervisors[0])
-        );
+
         for (var i in res.data.supervisors) {
-          console.log("supervisor" + res.data.supervisors[i]);
           finalObj.push(res.data.supervisors[i]);
           // finalObj1.push(res.data.supervisors[i].town);
         }
@@ -251,7 +247,7 @@ export default function Complaints(props) {
         // setTown(finalObj1);
       })
       .catch((err) => {
-        console.log("errrrrror", err);
+        console.log("error", err);
         setErrors(err);
       });
   };
@@ -275,7 +271,6 @@ export default function Complaints(props) {
           complaint: unresolved.filter((item) => item.town === supervisor.town),
         };
       }
-      console.log("lalala", Assign);
 
       // return obj;
     });
@@ -283,7 +278,6 @@ export default function Complaints(props) {
     if (Assign.find((obj) => obj != null)) setAssignDialog(true);
     setAssignSupervisor(Assign);
 
-    console.log("experiment" + JSON.stringify(Assign));
   };
   const handleSupervisorChange = (event) => {
     setSupervisor(event.target.value);
@@ -329,7 +323,7 @@ export default function Complaints(props) {
     });
   };
   useEffect(() => {
-    console.log("complainIdopen", complainIdOpen, orignalData);
+    // console.log("complainIdopen", complainIdOpen, orignalData);
     if (mainData.length !== 0) {
       if (complainIdOpen != null && alreadyOpen != complainIdOpen) {
         setOpen(true);
@@ -339,7 +333,7 @@ export default function Complaints(props) {
     }
   }, [complainIdOpen, mainData]);
   useEffect(() => {
-    console.log("props", statusFilter);
+    // console.log("props", statusFilter);
 
     if (notifFilter != null) {
       filterTable("statusType", [notifFilter]);
@@ -351,11 +345,11 @@ export default function Complaints(props) {
     if (statusFilter != null) filterTable("otherStatus", [statusFilter]);
   }, [statusFilter, typeFilter]);
   useEffect(() => {
-    if (userData.Role == "ADMIN") assignComplaints();
+    if (userData.Role === "ADMIN") assignComplaints();
   }, [mainData, supervisors]);
 
   useEffect(() => {
-    if (complaintFilter == "active") {
+    if (complaintFilter === "active") {
       // setFilter({
       //   statusType: ["Assigned", "Unresolved"],
       //   type: [],
@@ -421,7 +415,7 @@ export default function Complaints(props) {
   }, [filter, orignalData]);
 
   const filterTable = (name, value) => {
-    // console.log("filterssssssssssss" + name, value);
+    // console.log("filters" + name, value);
     setOrignalData(mainData);
     setFilter((filter) => ({ ...filter, [name]: value }));
     setPage(0);
@@ -441,7 +435,7 @@ export default function Complaints(props) {
         },
       })
       .then((res) => {
-        console.log("WOW!", res.data);
+        // console.log("data", res.data);
         for (var i in res.data) {
           // console.log("iiiiiii" + JSON.stringify(res.data[i]));
           var tmpObj = {};
@@ -477,7 +471,7 @@ export default function Complaints(props) {
           tmpObj["otherStatus"] = res.data[i].supervisorStatus
             ? res.data[i].supervisorStatus
             : res.data[i].adminStatus;
-          // console.log("finalll" + tmpObj["status"].statusType);
+          // console.log("final" + tmpObj["status"].statusType);
           finalObj.push(tmpObj);
         }
 
@@ -502,14 +496,13 @@ export default function Complaints(props) {
           }
         }
 
-        console.log("complaints nahi arhi", err.response);
+        console.log("complaints not coming", err.response);
         setErrors(err);
       });
   }
 
   useEffect(() => {
-    console.log("userData" + JSON.stringify(userData));
-    if (userData.Role == "ADMIN") getSupervisor();
+    if (userData.Role === "ADMIN") getSupervisor();
     fetchData();
     // setComplaintFilter("active");
   }, [userData]);
@@ -517,7 +510,6 @@ export default function Complaints(props) {
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
-    console.log("this is property" + property);
     setOrderBy(property);
   };
 

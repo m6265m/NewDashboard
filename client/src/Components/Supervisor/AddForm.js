@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
-
 import Tooltip from "@material-ui/core/Tooltip";
 import DialogContent from "@material-ui/core/DialogContent";
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,9 +25,7 @@ import AddBoxIcon from "@material-ui/icons/AddBox";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Backdrop from "@material-ui/core/Backdrop";
-
 import CancelIcon from "@material-ui/icons/Cancel";
-
 import { Scrollbars } from "react-custom-scrollbars";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
@@ -251,19 +248,19 @@ export default function AddForm(props) {
         })
         .catch((err) => {
           if (err.response) {
-            if (err.response.status == 400) {
+            if (err.response.status === 400) {
               setLoading(false);
-              if (err.response.data == "email") {
+              if (err.response.data === "email") {
                 setForm({
                   ...form,
                   helperTextMain: "*Email is already in use",
                 });
-              } else if (err.response.data == "username") {
+              } else if (err.response.data === "username") {
                 setForm({
                   ...form,
                   helperTextMain: "*Username is already in use",
                 });
-              } else if (err.response.data == "phoneNumber") {
+              } else if (err.response.data === "phoneNumber") {
                 setForm({
                   ...form,
                   helperTextMain: "*PhoneNumber is already in use",

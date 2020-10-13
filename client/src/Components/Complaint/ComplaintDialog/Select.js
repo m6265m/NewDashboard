@@ -49,7 +49,7 @@ export default function SelectStatus(props) {
   };
   const getStatus = () => {
     setError(false);
-    var finalObj = [];
+    let finalObj = [];
     axios
       .get("https://m2r31169.herokuapp.com/api/getStatus?Role=" + role, {
         headers: {
@@ -57,11 +57,9 @@ export default function SelectStatus(props) {
         },
       })
       .then((res) => {
-        console.log(res.data);
-        for (var i in res.data) {
+        for (let i in res.data) {
           finalObj.push(res.data[i]);
         }
-        console.log("Status" + finalObj.toString());
         setStatus(finalObj);
       })
       .catch((err) => {
@@ -85,7 +83,6 @@ export default function SelectStatus(props) {
   }, []);
 
   const handleChange = (event) => {
-    console.log("target valyeeeeeeeeeeee" + event.target.value);
     setValues(event.target.value);
     changeValue(
       event.target.value,
@@ -106,17 +103,17 @@ export default function SelectStatus(props) {
       >
         {status
           .filter((statusName) =>
-            status.find((x) => x.id === value).statusType == "Assigned" ||
-            status.find((x) => x.id === value).statusType == "Active"
-              ? statusName.statusType != "Unresolved"
+            status.find((x) => x.id === value).statusType === "Assigned" ||
+            status.find((x) => x.id === value).statusType === "Active"
+              ? statusName.statusType !== "Unresolved"
               : true
           )
           .filter((statusName) =>
-            status.find((x) => x.id === value).statusType == "Assigned" &&
-            otherStatus == "Resolved"
-              ? statusName.statusType == "Resolved"
-              : otherStatus != "Resolved" && role == "ADMIN"
-              ? statusName.statusType != "Resolved"
+            status.find((x) => x.id === value).statusType === "Assigned" &&
+            otherStatus === "Resolved"
+              ? statusName.statusType === "Resolved"
+              : otherStatus !== "Resolved" && role === "ADMIN"
+              ? statusName.statusType !== "Resolved"
               : true
           )
 

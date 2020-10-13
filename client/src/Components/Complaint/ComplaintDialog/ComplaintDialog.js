@@ -83,9 +83,7 @@ export default function ComplaintDialog(props) {
     setValue(index);
   };
 
-  useEffect(() => {
-    console.log("lalalalal", supervisors, sel.supervisorId);
-  }, []);
+
 
   return (
     <Dialog
@@ -111,7 +109,7 @@ export default function ComplaintDialog(props) {
             <Tab label="Progress" {...a11yProps(1)} />
             <Tab
               label={
-                sel.statusType == "Resolved" ? "Users & Feedbacks" : "Users"
+                sel.statusType === "Resolved" ? "Users & Feedbacks" : "Users"
               }
               {...a11yProps(2)}
             />

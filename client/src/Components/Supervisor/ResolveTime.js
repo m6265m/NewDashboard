@@ -83,6 +83,7 @@ function ResolveTime(props) {
                         console.log(err.response.status);
                     }
                 }
+                setResolveTimeCheck(1);
                 console.error(err);
             });
     }, []);

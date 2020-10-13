@@ -52,7 +52,6 @@ export default function FeedbackTags(props) {
   };
 
   const deleteTag = (it) => {
-    console.log("iteemmmmmmmmmmmmm" + it);
     axios
       .post(
         "https://m2r31169.herokuapp.com/api/deleteFeedbackTag",
@@ -64,7 +63,7 @@ export default function FeedbackTags(props) {
         }
       )
       .then((res) => {
-        console.log("post hogayi" + res.data);
+        // console.log("posted" + res.data);
         getTags();
       })
       .catch((err) => {
@@ -79,11 +78,11 @@ export default function FeedbackTags(props) {
             alert("Something went wrong. Please try again later");
           }
         }
-        console.log("error agaya" + err);
+        console.log("error" + err);
       });
   };
   const AddTag = () => {
-    console.log("iteemmmmmmmmmmmmm" + newTag, allTags.includes(newTag));
+    // console.log("item" + newTag, allTags.includes(newTag));
     if (allTags.some((e) => e.tags === newTag)) {
       alert("The tag is already been added");
       setNewTag("");
@@ -99,7 +98,6 @@ export default function FeedbackTags(props) {
           }
         )
         .then((res) => {
-          console.log("post hogayi" + res.data);
           getTags();
           setNewTag("");
         })
@@ -115,13 +113,13 @@ export default function FeedbackTags(props) {
               alert("Something went wrong. Please try again later");
             }
           }
-          console.log("error agaya" + err);
+          console.log("error" + err);
         });
     }
   };
   const getTags = () => {
     loading(true);
-    var finalObj = [];
+    let finalObj = [];
     axios
       .get("https://m2r31169.herokuapp.com/api/feedbackAssociatedStars", {
         headers: {
@@ -130,11 +128,9 @@ export default function FeedbackTags(props) {
       })
       .then((res) => {
         loading(false);
-        console.log("agyaa" + JSON.stringify(res.data));
         for (var i in res.data) {
           finalObj.push(res.data[i]);
         }
-        console.log("Reasonssssss" + finalObj.toString());
         setAllTags(finalObj);
       })
       .catch((err) => {
@@ -150,7 +146,7 @@ export default function FeedbackTags(props) {
             props.handleError(err.response.status);
           }
         }
-        console.log("error agaya" + err);
+        console.log("error" + err);
       });
 
     //   .catch((err) => setErrors(err));
@@ -171,7 +167,7 @@ export default function FeedbackTags(props) {
           <TableRow className="tableRow">
             <TableCell align="center">Tag</TableCell>
             <TableCell align="center">Ratings</TableCell>
-            <TableCell align="center"></TableCell>
+            <TableCell align="center"/>
           </TableRow>
         </TableHead>
         <TableBody className="tableBody">

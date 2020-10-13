@@ -14,16 +14,16 @@ export default function Status(props) {
   const [bgcolor, setBgcolor] = useState(lighten("#008080", 0.75));
 
   const setValues = () => {
-    if (name == "Assigned" || name == "Active") {
+    if (name === "Assigned" || name === "Active") {
       setColor("rgb(142, 36, 170)");
       setBgcolor(lighten("rgb(142, 36, 170)", 0.75));
-    } else if (name == "Unresolved") {
+    } else if (name === "Unresolved") {
       setColor("red");
       setBgcolor("#ff000052");
-    } else if (name == "Rejected") {
+    } else if (name === "Rejected") {
       setColor("#FFB400");
       setBgcolor("rgba(251, 179, 26, 0.33)");
-    } else if (name == "Resolved") {
+    } else if (name === "Resolved") {
       setColor("#008081");
       setBgcolor("#daf4db");
     }
@@ -45,18 +45,18 @@ export default function Status(props) {
         minWidth: "80px",
       }}
     >
-      {name == "Resolved" && (
+      {name === "Resolved" && (
         <CheckIcon style={{ fontSize: "18px", marginRight: "5px" }} />
       )}
-      {(name == "Assigned" || name == "Active") && (
+      {(name === "Assigned" || name === "Active") && (
         <HourglassFullTwoToneIcon
           style={{ fontSize: "18px", marginRight: "5px" }}
         />
       )}
-      {name == "Unresolved" && (
+      {name === "Unresolved" && (
         <ClearIcon style={{ fontSize: "18px", marginRight: "5px" }} />
       )}
-      {name == "Rejected" && (
+      {name === "Rejected" && (
         <ErrorOutlineOutlinedIcon
           style={{ fontSize: "18px", marginRight: "5px" }}
         />

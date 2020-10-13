@@ -32,7 +32,6 @@ export default function ComplaintDetails(props) {
           "&format=json"
       )
       .then((res) => {
-        console.log("address" + res.data);
         setLocation(res.data.display_name);
       })
       .catch((err) => console.log("Error in reverse" + err));
@@ -56,9 +55,9 @@ export default function ComplaintDetails(props) {
         <Details
           title="Complaint Status"
           display={
-            role == "SUPERVISOR" ||
-            sel.statusType == "Resolved" ||
-            sel.statusType == "Rejected"
+            role === "SUPERVISOR" ||
+            sel.statusType === "Resolved" ||
+            sel.statusType === "Rejected"
               ? "block"
               : "none"
           }
@@ -67,9 +66,9 @@ export default function ComplaintDetails(props) {
           name={sel.statusType}
           buttonComp="div"
           display={
-            role == "SUPERVISOR" ||
-            sel.statusType == "Resolved" ||
-            sel.statusType == "Rejected"
+            role === "SUPERVISOR" ||
+            sel.statusType === "Resolved" ||
+            sel.statusType === "Rejected"
               ? "flex"
               : "none"
           }

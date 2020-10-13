@@ -22,7 +22,7 @@ export default function ComplaintTypes(props) {
 
   const getTypes = () => {
     loading(true);
-    var finalObj = [];
+    let finalObj = [];
     axios
       .get(
         "https://m2r31169.herokuapp.com/api/dashboard/getComplaintTypeAndImage",
@@ -34,12 +34,9 @@ export default function ComplaintTypes(props) {
       )
       .then((res) => {
         loading(false);
-        console.log(res.data);
-        for (var i in res.data) {
+        for (let i in res.data) {
           finalObj.push(res.data);
         }
-        //rabia ko bolo sahi kro
-        console.log("Typesssss" + JSON.stringify(finalObj[0]));
         setTypes(finalObj[0]);
       })
       .catch((err) => {

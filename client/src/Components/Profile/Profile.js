@@ -11,7 +11,6 @@ import {
   Input,
   InputLabel,
 } from "@material-ui/core";
-
 import ImageComponent from "../Profile/ImageComponent";
 import UserStatistics from "../Profile/UserStatistics";
 import Alerts from "../Profile/Alerts";
@@ -86,20 +85,18 @@ function Profile(props) {
     // );
     setphoneNumber("+92" + phoneNumber.slice(-10));
     setLoading(true);
-    console.log("lalal" + phoneNumber, fullName, email);
     if (imageRemove) {
       onPhotoRemove();
     } else if (imageUpload) {
       onPhotoUpload();
-    } else if (fullName != userData.userData.name) {
+    } else if (fullName !== userData.userData.name) {
       update(fullName, "name", "Name");
-    } else if (email != userData.userData.email) {
+    } else if (email !== userData.userData.email) {
       update(email, "email", "Email");
     } else if (
-      "+92" + phoneNumber.slice(-10) !=
+      "+92" + phoneNumber.slice(-10) !==
       userData.userData.phoneNumber
     ) {
-      //console.log("lalal" + phoneNumber, fullName, email);
       update("+92" + phoneNumber.slice(-10), "phoneNumber", "phoneNumber");
     } else setLoading(false);
   };
@@ -128,7 +125,6 @@ function Profile(props) {
           },
         });
         props.updateProfileImage(null);
-        console.log("post hogayi" + res.data);
       })
       .catch((err) => {
         if (err.response) {
@@ -141,7 +137,7 @@ function Profile(props) {
           }
         }
         setLoading(false);
-        console.log("error agaya" + err);
+        console.log("error" + err);
       });
   };
 
@@ -185,7 +181,7 @@ function Profile(props) {
             handleLogoutAutomatically();
           }
 
-          if (error.response.status == 400)
+          if (error.response.status === 400)
             alert("Please choose a valid image  ");
         }
         if (err.response.status === 503 || err.response.status === 500) {
@@ -198,7 +194,7 @@ function Profile(props) {
   };
 
   const update = (value, key, api) => {
-    console.log("update" + value);
+    // console.log("update" + value);
 
     axios
       .post(
@@ -213,7 +209,7 @@ function Profile(props) {
         }
       )
       .then((res) => {
-        console.log("profile updated" + res.data);
+        // console.log("profile updated" + res.data);
         setLoading(false);
         store.set("userData", {
           ...userData,
@@ -287,7 +283,7 @@ function Profile(props) {
               }
               role={
                 Object.keys(userData).length > 0 &&
-                (userData.Role == "ADMIN" ? "Administrator" : "Supervisor")
+                (userData.Role === "ADMIN" ? "Administrator" : "Supervisor")
               }
               image={
                 Object.keys(userData).length > 0 &&

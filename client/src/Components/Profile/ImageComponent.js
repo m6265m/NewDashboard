@@ -12,7 +12,6 @@ import {
 import React, { useState, useEffect } from "react";
 import PublishIcon from "@material-ui/icons/Publish";
 import DeleteIcon from "@material-ui/icons/Delete";
-
 import cameraIcon from "../../assets/images/camera.webp";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,9 +56,7 @@ export default function ImageComponent(props) {
     setImage(URL.createObjectURL(e.target.files[0]));
   };
 
-  useEffect(() => {
-    console.log("imagecomponent", images);
-  });
+
 
   return (
     <div

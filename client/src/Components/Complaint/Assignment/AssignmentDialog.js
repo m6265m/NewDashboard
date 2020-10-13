@@ -56,7 +56,6 @@ export default function AssignmentDialog(props) {
 
   const handleSaveClose = () => {
     selected.forEach(function (name) {
-      console.log("dataaaa", data);
       if (data.length > 0) {
         var s = data
           .filter((obj) => obj != null)
@@ -83,7 +82,7 @@ export default function AssignmentDialog(props) {
         },
       })
       .then((res) => {
-        console.log("post hogayi" + res.data);
+        console.log("posted" + res.data);
 
         dialogClose();
         save();
@@ -101,12 +100,11 @@ export default function AssignmentDialog(props) {
           }
         }
 
-        console.log("error agaya" + err);
+        console.log("error" + err);
       });
   };
 
   useEffect(() => {
-    console.log("sellll", data);
   }, []);
   return (
     role === "ADMIN" && (

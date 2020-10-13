@@ -16,7 +16,6 @@ export default function UserTable(props) {
   const { id, status } = props;
   let store = require("store");
   const [userData, setUserData] = useState(store.get("userData"));
-
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(false);
   //const [feedback, setFeedback] = useState([]);
@@ -36,21 +35,19 @@ export default function UserTable(props) {
 
   const getUsers = () => {
     setError(false);
-    var finalObj = [];
-    var feedbackObj = [];
+    let finalObj = [];
+    let feedbackObj = [];
     axios
       .get(
         "https://m2r31169.herokuapp.com/api/userByComplainId?ComplainId=" + id
       )
       .then((res) => {
-        console.log("usersssss" + JSON.stringify(res.data.Users[0].Feedbacks));
-        console.log("usersssss" + res.data.Users[0].Feedbacks[0].Star);
+
         if (res.data.Users[0].User != null) {
           for (var i in res.data.Users) {
             finalObj.push(res.data.Users[i]);
             //feedbackObj.push(res.data.Users[i].Feedbacks);
           }
-          console.log("Status" + JSON.stringify(finalObj));
           setUsers(finalObj);
           //setFeedbacks(feedbackObj);
         }
@@ -88,7 +85,7 @@ export default function UserTable(props) {
               <TableCell align="center">Phone Number</TableCell>
               <TableCell align="center">Email Address</TableCell>
 
-              {status == "Resolved" && (
+              {status === "Resolved" && (
                 <TableCell align="center">Feedback</TableCell>
               )}
             </TableRow>
@@ -99,7 +96,7 @@ export default function UserTable(props) {
                 <TableCell align="center">{user.User.name}</TableCell>
                 <TableCell align="center">{user.User.phoneNumber}</TableCell>
                 <TableCell align="center">{user.User.email}</TableCell>
-                {status == "Resolved" && (
+                {status === "Resolved" && (
                   <TableCell align="center">
                     {user.Feedbacks[0].Star ? (
                       <Box>

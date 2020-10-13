@@ -118,7 +118,7 @@ export default function Type(props) {
           }
         }
         if (err.response) {
-          if (err.response.status == 400)
+          if (err.response.status === 400)
             alert("Please choose a valid image  ");
         } else {
           console.log(err);
@@ -128,7 +128,7 @@ export default function Type(props) {
   const updateType = () => {
     if (typeName === "") setTypeName(name);
 
-    if (typeName != name || inputImage) uploadImage();
+    if (typeName !== name || inputImage) uploadImage();
   };
 
   const ToggleAndUpdate = () => {
@@ -155,11 +155,10 @@ export default function Type(props) {
         }
       )
       .then((res) => {
-        console.log("post hogayi" + res.data);
         doneEnable();
       })
       .catch((err) => {
-        console.log("error agaya" + err);
+        console.log("error" + err);
         if (err.response) {
           if (err.response.status === 401 || err.response.status === 403) {
             handleLogoutAutomatically();

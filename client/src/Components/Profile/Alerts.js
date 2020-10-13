@@ -6,7 +6,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { ListSubheader, ListItemSecondaryAction, Box } from "@material-ui/core";
 import { Scrollbars } from "react-custom-scrollbars";
 import { Link } from "react-router-dom";
-
 import Moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,11 +24,11 @@ export default function Alerts(props) {
   const classes = useStyles();
 
   const chooseColor = (status) => {
-    return status == "Resolved" || status == "Verified"
+    return status === "Resolved" || status === "Verified"
       ? "#008081"
-      : status == "Active" || status == "Assigned"
+      : status === "Active" || status === "Assigned"
       ? "rgb(142, 36, 170)"
-      : status == "Rejected"
+      : status === "Rejected"
       ? "#FFB400"
       : "#FF0000";
   };
@@ -38,7 +37,6 @@ export default function Alerts(props) {
   const [notifData, setNotifData] = useState([]);
   const [notifType, setNotifType] = useState([]);
   useEffect(() => {
-    console.log("notif", data);
 
     const dateFilter = data.filter((item) => {
       // console.log("notif", Moment(item.timeAndDate));
@@ -46,7 +44,6 @@ export default function Alerts(props) {
       // console.log("notif", Moment("2019-6-19").isSame(new Date(), "week"));
       return Moment(item.timeAndDate).isSame(new Date(), "week");
     });
-    console.log("notif", dateFilter);
     setNotifData(dateFilter);
     const unique = [...new Set(dateFilter.map((item) => item.statusType))];
     setNotif(unique);
@@ -65,7 +62,7 @@ export default function Alerts(props) {
           </ListItemAvatar> */}
       <Scrollbars style={{ minHeight: "300px" }}>
         {/* orignalData.filter((obj) => obj.statusType === "Resolved") .length */}
-        {notif.length != 0 ? (
+        {notif.length !== 0 ? (
           notifType.map((y) => {
             return notif.map((x) => {
               // console.log(
@@ -113,9 +110,9 @@ function AlertList(props) {
         to={{
           pathname: "/dashboard/complaints",
           statusFilter:
-            notification == "Unresolved"
+            notification === "Unresolved"
               ? null
-              : notification == "Verified"
+              : notification === "Verified"
               ? "Resolved"
               : notification,
           typeFilter: type,
@@ -138,7 +135,7 @@ function AlertList(props) {
                   className={classes.inline}
                   color="textPrimary"
                 >
-                  {notification == "Assigned"
+                  {notification === "Assigned"
                     ? "New Complaint Assigned"
                     : notification}
                 </Box>
@@ -149,7 +146,7 @@ function AlertList(props) {
                   className={classes.inline}
                   color="gray"
                   style={{ float: "right" }}
-                ></Box>
+                />
               </React.Fragment>
             }
             secondary={
@@ -170,24 +167,24 @@ function AlertList(props) {
                 : notification.statusType == "Rejected"
                 ? ". Click here to view reason of rejection"
                 : "")} */}
-                {notification != "Assigned"
+                {notification !== "Assigned"
                   ? number +
                     " new Complaint" +
-                    (number == 1 ? "" : "s") +
+                    (number === 1 ? "" : "s") +
                     " of " +
                     type +
                     " have been " +
                     notification +
                     " this week. " +
-                    (notification == "Resolved"
+                    (notification === "Resolved"
                       ? "Click here to verify complaint . "
-                      : notification == "Rejected"
+                      : notification === "Rejected"
                       ? "Click here to view reason of rejection . "
                       : "")
                   : "You have been assigned " +
                     number +
                     " new compaint" +
-                    (number == 1 ? "" : "s") +
+                    (number === 1 ? "" : "s") +
                     " of " +
                     type}
               </Box>

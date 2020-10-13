@@ -31,13 +31,11 @@ export default function ComplaintProgress(props) {
 
   useEffect(() => {
     setNewImage(null);
-    console.log(sel, "mera");
   }, []);
   useEffect(() => {
     setStatusId(sel.statusId);
     setSelStatus(sel.statusType);
     setSupervisor(sel.supervisorId);
-    console.log("sellll", Selstatus, sel.supervisorId, supervisor);
   }, []);
 
   const uploadImage = (file) => {
@@ -45,38 +43,32 @@ export default function ComplaintProgress(props) {
   };
 
   const handleSaveClose = (statusOfId, StatusId, ComplainId, supervisorId) => {
-    console.log("wahan", StatusId, statusOfId, supervisor, newImage, role);
-    if (role == "SUPERVISOR" && statusOfId == "Resolved" && newImage == null) {
+    if (role === "SUPERVISOR" && statusOfId === "Resolved" && newImage == null) {
       console.log("error show");
       setError("Choose an image");
-    } else if (statusOfId == "Assigned" && supervisor == null) {
+    } else if (statusOfId === "Assigned" && supervisor == null) {
       setError("Choose a supervisor");
-    } else if (statusOfId == "Rejected" && reason == "") {
+    } else if (statusOfId === "Rejected" && reason === "") {
       setError("Choose a reason please");
     } else {
       setError("");
-      if (sel.statusId != StatusId || sel.supervisorId != supervisorId) {
+      if (sel.statusId !== StatusId || sel.supervisorId !== supervisorId) {
         callApi(statusOfId, StatusId, ComplainId, supervisorId);
       } else {
         dialogClose();
       }
     }
 
-    console.log("yahan");
   };
 
   const updateStatus = (value, name) => {
-    console.log("sellll", Selstatus);
     setSelStatus(name);
     setStatusId(value);
-    console.log("Valueeee" + value);
-    console.log("sellll", Selstatus);
   };
 
   const updateSupervisor = (value) => {
     setSupervisor(value);
-    console.log("sellll", Selstatus);
-    console.log("Valueeee" + value);
+
   };
 
   const handleLogoutAutomatically = () => {
@@ -87,30 +79,28 @@ export default function ComplaintProgress(props) {
   };
   const callApi = (statusType, statusId, complainId, supervisorId) => {
     setLoading(true);
-    var api = "";
-    if (role == "ADMIN") {
+    let api = "";
+    if (role === "ADMIN") {
       api = "/api/updateComplainStatus";
     } else {
       api = "/api/updateAssignedComplaintStatus";
     }
-    console.log("wwwww", api, statusId, complainId, supervisor);
 
     const key =
-      statusType == "Rejected"
+      statusType === "Rejected"
         ? "reason"
-        : statusType == "Assigned"
+        : statusType === "Assigned"
         ? "supervisor"
         : "";
     const value =
-      statusType == "Rejected"
+      statusType === "Rejected"
         ? reason
-        : statusType == "Assigned"
+        : statusType === "Assigned"
         ? supervisor
         : "";
 
-    // console.log("wwwwww " + statusId + "l   " + complainId + key + value);
     var data = {};
-    if (role == "ADMIN") {
+    if (role === "ADMIN") {
       data = {
         StatusId: StatusId,
         id: complainId,
@@ -121,16 +111,16 @@ export default function ComplaintProgress(props) {
       data.set("StatusId", StatusId);
       data.set("id", complainId);
 
-      if (key != "") {
+      if (key !== "") {
         data.set(key, value);
       }
-      if (newImage != null && Selstatus == "Resolved") {
+      if (newImage != null && Selstatus === "Resolved") {
         data.append("resolvedComplaintImage", newImage);
       }
     }
 
     const headers =
-      role == "ADMIN"
+      role === "ADMIN"
         ? {
             "x-access-token": token,
           }
@@ -146,8 +136,6 @@ export default function ComplaintProgress(props) {
       })
       .then((res) => {
         setLoading(false);
-        console.log("post hogayi" + res.data);
-        console.log("wwwwww", JSON.stringify(data));
         setSelStatus("");
 
         dialogClose();
@@ -166,13 +154,13 @@ export default function ComplaintProgress(props) {
             alert("Something went wrong. Please try again later");
           }
         }
-        console.log("error agaya" + err);
-        console.log("error agaya", err.response);
+        console.log("error here" + err);
+        console.log("error here", err.response);
       });
   };
 
   // const getSupervisorStatus = () => {
-  //   console.log("supervisor status andr");
+  //   console.log("supervisor status ");
   //   axios
   //     .get(
   //       "https://m2r31169.herokuapp.com/api/getSuperVisorStatus?id=" + sel.id
@@ -187,7 +175,7 @@ export default function ComplaintProgress(props) {
   //       // setReason(finalObj);
   //     })
   //     .catch((err) => {
-  //       console.log("error agaya", err);
+  //       console.log("error ", err);
   //     });
   // };
 
@@ -206,9 +194,9 @@ export default function ComplaintProgress(props) {
           <Details
             title="Complaint Status"
             display={
-              sel.statusType == "Resolved" ||
-              sel.statusType == "Rejected" ||
-              sel.otherStatus == "Active"
+              sel.statusType === "Resolved" ||
+              sel.statusType === "Rejected" ||
+              sel.otherStatus === "Active"
                 ? "block"
                 : "none"
             }
@@ -217,32 +205,32 @@ export default function ComplaintProgress(props) {
             name={sel.statusType}
             buttonComp="div"
             display={
-              sel.statusType == "Resolved" ||
-              sel.statusType == "Rejected" ||
-              sel.otherStatus == "Active"
+              sel.statusType === "Resolved" ||
+              sel.statusType === "Rejected" ||
+              sel.otherStatus === "Active"
                 ? "flex"
                 : "none"
             }
           />
           <Details
             title="Reason for Rejection"
-            name={sel.reason == "" ? "No reason specified" : sel.reason}
-            display={sel.statusType == "Rejected" ? "block" : "none"}
+            name={sel.reason === "" ? "No reason specified" : sel.reason}
+            display={sel.statusType === "Rejected" ? "block" : "none"}
           />
 
           <Details
             title="Supervisor"
             name={
               sel.supervisorId &&
-              supervisors.find((x) => x.supervisorId == sel.supervisorId) &&
-              supervisors.find((x) => x.supervisorId == sel.supervisorId).name
+              supervisors.find((x) => x.supervisorId === sel.supervisorId) &&
+              supervisors.find((x) => x.supervisorId === sel.supervisorId).name
             }
             display={
-              role == "ADMIN" &&
+              role === "ADMIN" &&
               sel.supervisorId &&
-              (sel.statusType == "Resolved" ||
-                sel.statusType == "Rejected" ||
-                sel.otherStatus == "Active")
+              (sel.statusType === "Resolved" ||
+                sel.statusType === "Rejected" ||
+                sel.otherStatus === "Active")
                 ? "block"
                 : "none"
             }
@@ -250,46 +238,46 @@ export default function ComplaintProgress(props) {
           <SelectStatus
             role={role}
             display={
-              sel.statusType == "Resolved" ||
-              sel.statusType == "Rejected" ||
-              sel.otherStatus == "Active"
+              sel.statusType === "Resolved" ||
+              sel.statusType === "Rejected" ||
+              sel.otherStatus === "Active"
                 ? "none"
                 : "inline-flex"
             }
             otherStatus={sel.otherStatus}
             token={token}
             disable={
-              sel.statusType == "Resolved" ||
-              sel.statusType == "Rejected" ||
-              sel.otherStatus == "Active"
+              sel.statusType === "Resolved" ||
+              sel.statusType === "Rejected" ||
+              sel.otherStatus === "Active"
             }
             role={role}
             name="Status"
             value={sel.statusId}
             changeValue={updateStatus}
           />
-          {role == "ADMIN" && (
+          {role === "ADMIN" && (
             <SelectSupervisor
               key={sel.StatusId}
               token={token}
               display={
-                Selstatus === "Assigned" && sel.otherStatus != "Active"
+                Selstatus === "Assigned" && sel.otherStatus !== "Active"
                   ? "inline-flex"
                   : "none"
               }
-              disable={!(Selstatus == "Assigned")}
+              disable={!(Selstatus === "Assigned")}
               name={"Supervisor"}
               value={sel.supervisorId ? sel.supervisorId : ""}
               changeValue={updateSupervisor}
             />
           )}
-          {role != "ADMIN" && Selstatus === "Active" && <TextField />}
+          {role !== "ADMIN" && Selstatus === "Active" && <TextField />}
           <Reason
             value={reason}
             key={reason}
             name="Reason for rejecting"
             display={
-              Selstatus == "Rejected" && sel.statusType != "Rejected"
+              Selstatus === "Rejected" && sel.statusType !== "Rejected"
                 ? "inline-flex"
                 : "none"
             }
@@ -306,15 +294,15 @@ export default function ComplaintProgress(props) {
           >
             {error}
           </Box>
-          {role == "ADMIN" && sel.supervisorId != null ? (
+          {role === "ADMIN" && sel.supervisorId != null ? (
             <Details title="Supervisor Status" name={sel.otherStatus} />
           ) : (
-            role == "SUPERVISOR" &&
-            sel.statusType == "Resolved" && (
+            role === "SUPERVISOR" &&
+            sel.statusType === "Resolved" && (
               <Details
                 title="Admin Status"
                 name={
-                  sel.otherStatus == "Resolved"
+                  sel.otherStatus === "Resolved"
                     ? "Verified"
                     : "Waiting for verification"
                 }
@@ -326,7 +314,7 @@ export default function ComplaintProgress(props) {
               />
             )
           )}
-          {sel.otherStatus == "Resolved" && sel.statusType != "Resolved" && (
+          {sel.otherStatus === "Resolved" && sel.statusType !== "Resolved" && (
             <Box color="red">
               <ErrorOutlineOutlinedIcon style={{ fontSize: "20px" }} />
               {"  Please verify this complaint"}
@@ -356,15 +344,15 @@ export default function ComplaintProgress(props) {
             </Paper>
           </Grid>
         )}
-        {role == "SUPERVISOR" &&
-          Selstatus == "Resolved" &&
-          sel.statusType != "Resolved" &&
-          sel.afterImage == null && (
+        {role === "SUPERVISOR" &&
+          Selstatus === "Resolved" &&
+          sel.statusType !== "Resolved" &&
+          sel.afterImage === null && (
             <Grid
               item
               xs={12}
               sm={6}
-              style={{ display: Selstatus == "Resolved" ? "block" : "none" }}
+              style={{ display: Selstatus === "Resolved" ? "block" : "none" }}
             >
               <Box
                 fontWeight="700"
@@ -381,9 +369,9 @@ export default function ComplaintProgress(props) {
       </Grid>
       <DialogActions>
         {!(
-          sel.statusType == "Resolved" ||
-          sel.statusType == "Rejected" ||
-          sel.otherStatus == "Active"
+          sel.statusType === "Resolved" ||
+          sel.statusType === "Rejected" ||
+          sel.otherStatus === "Active"
         ) && (
           <div>
             <Button

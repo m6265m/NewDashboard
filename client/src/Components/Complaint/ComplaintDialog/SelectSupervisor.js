@@ -37,7 +37,7 @@ export default function SelectSupervisor(props) {
   };
   const getStatus = () => {
     setError(false);
-    var finalObj = [];
+    let finalObj = [];
     // var finalObj1 = [];
     axios
       .get("https://m2r31169.herokuapp.com/api/getSuperVisor_Town", {
@@ -46,9 +46,7 @@ export default function SelectSupervisor(props) {
         },
       })
       .then((res) => {
-        console.log("supervisor" + JSON.stringify(res.data.supervisors[0]));
         for (var i in res.data.supervisors) {
-          console.log("supervisor" + res.data.supervisors[i]);
           finalObj.push(res.data.supervisors[i]);
           // finalObj1.push(res.data.supervisors[i].town);
         }
@@ -73,13 +71,11 @@ export default function SelectSupervisor(props) {
   };
 
   useEffect(() => {
-    console.log("supervisor mera", value);
     setValues(value);
     getStatus();
   }, []);
 
   const handleChange = (event) => {
-    console.log("target valyeeeeeeeeeeee" + event.target.value);
     setValues(event.target.value);
     changeValue(event.target.value);
   };

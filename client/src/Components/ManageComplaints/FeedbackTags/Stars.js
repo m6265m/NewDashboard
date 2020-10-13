@@ -22,7 +22,6 @@ export default function FeedbackTags(props) {
   };
 
   const addStarToTag = (id, yes) => {
-    console.log("iteemmmmmmmmmmmmm" + id, yes);
     axios
       .post(
         "https://m2r31169.herokuapp.com/api/addTagToStar",
@@ -34,7 +33,6 @@ export default function FeedbackTags(props) {
         }
       )
       .then((res) => {
-        console.log("post hogayi" + res.data);
         save();
       })
       .catch((err) => {
@@ -49,12 +47,11 @@ export default function FeedbackTags(props) {
             alert("Something went wrong. Please try again later");
           }
         }
-        console.log("error agaya" + err);
+        console.log("error" + err);
       });
   };
 
   const deleteStarToTag = (id, yes) => {
-    console.log("iteemmmmmmmmmmmmm" + id, yes);
     axios
       .post(
         "https://m2r31169.herokuapp.com/api/deleteTagOfStar",
@@ -66,7 +63,6 @@ export default function FeedbackTags(props) {
         }
       )
       .then((res) => {
-        console.log("post hogayi" + res.data);
         save();
       })
       .catch((err) => {
@@ -81,7 +77,7 @@ export default function FeedbackTags(props) {
             alert("Something went wrong. Please try again later");
           }
         }
-        console.log("error agaya" + err);
+        console.log("error" + err);
       });
   };
   return (

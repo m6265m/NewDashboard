@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-
 import PropTypes from "prop-types";
-
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -9,9 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
-
 import ListItemText from "@material-ui/core/ListItemText";
-
 import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
 
@@ -74,11 +70,9 @@ export default function SelectFilter(props) {
     // } else if (name == "town") {
     //   setStatus([...new Set(orignalData.map((item) => item.town))]);
     // }
-    console.log("cats" + status);
   }, [orignalData]);
 
   const handleChange = (event) => {
-    console.log("target valyeeeeeeeeeeee" + event.target.value);
     setValues(event.target.value);
     filterValue(props.name, event.target.value);
   };

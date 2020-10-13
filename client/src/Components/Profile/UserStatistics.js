@@ -27,7 +27,6 @@ export default function UserStatistics(props) {
         },
       })
       .then((res) => {
-        console.log("statistics" + res.data);
         setStatistics(res.data.statistics);
       })
       .catch((err) => {
@@ -91,7 +90,7 @@ export default function UserStatistics(props) {
                 "0 4px 20px 0 rgba(0, 0, 0,.14), 0 7px 10px -5px rgba(156, 39, 176,.4)",
             }}
           />
-          {props.role == "ADMIN" ? (
+          {props.role === "ADMIN" ? (
             <Details title="Assigned" name={statistics.Assigned} />
           ) : (
             <Details title="Active" name={statistics.Active} />

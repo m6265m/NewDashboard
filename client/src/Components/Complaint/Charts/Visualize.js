@@ -69,7 +69,6 @@ export default function Visualize(props) {
     perObj["unresolved"] = (props.unresolved * 100) / props.total;
     perObj["rejected"] = (props.rejected * 100) / props.total;
     perObj["assigned"] = (props.assigned * 100) / props.total;
-    console.log("hereeeeeeeeeeeeeeeeeeeeee" + props.unresolved);
     setPercentage(perObj);
   }
   useEffect(() => {

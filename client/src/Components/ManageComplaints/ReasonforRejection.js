@@ -3,7 +3,6 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { List, Button, TextField } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
-
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -43,7 +42,6 @@ export default function Rejection(props) {
   };
 
   const AddReason = () => {
-    console.log("iteemmmmmmmmmmmmm" + newReason);
     if (reason.includes(newReason)) {
       alert("The reason is already been added");
       setNewReason("");
@@ -59,7 +57,6 @@ export default function Rejection(props) {
           }
         )
         .then((res) => {
-          console.log("post hogayi" + res.data);
           setNewReason("");
           getReason();
         })
@@ -75,12 +72,11 @@ export default function Rejection(props) {
               alert("Something went wrong. Please try again later");
             }
           }
-          console.log("error agaya" + err);
+          console.log("error" + err);
         });
     }
   };
   const deleteReason = (item) => {
-    console.log("iteemmmmmmmmmmmmm" + item);
     axios
       .post(
         "https://m2r31169.herokuapp.com/api/deleteReasonForRejection",
@@ -92,7 +88,6 @@ export default function Rejection(props) {
         }
       )
       .then((res) => {
-        console.log("post hogayi" + res.data);
         getReason();
       })
       .catch((err) => {
@@ -107,20 +102,18 @@ export default function Rejection(props) {
             alert("Something went wrong. Please try again later");
           }
         }
-        console.log("error agaya" + err);
+        console.log("error" + err);
       });
   };
   const getReason = () => {
     loading(true);
-    var finalObj = [];
+    let finalObj = [];
     axios
       .get("https://m2r31169.herokuapp.com/api/getRejectTags")
       .then((res) => {
-        console.log("agyaa" + res.data);
         for (var i in res.data.Reasons) {
           finalObj.push(res.data.Reasons[i]);
         }
-        console.log("Reasonssssss" + finalObj.toString());
         setReason(finalObj);
 
         loading(false);
@@ -138,7 +131,7 @@ export default function Rejection(props) {
             props.handleError(err.response.status);
           }
         }
-        console.log("error agaya" + err);
+        console.log("error" + err);
       });
     //   .catch((err) => setErrors(err));
   };

@@ -63,7 +63,7 @@ export default function AddType(props) {
   };
 
   const ValidateAndAddType = () => {
-    if (typeName == "") {
+    if (typeName === "") {
       setError("Add a valid type name");
     } else if (image == null) {
       setError("Select an image");
@@ -91,7 +91,6 @@ export default function AddType(props) {
       )
       .then((response) => {
         console.log("done photo upload");
-        console.log("wwww fordata", JSON.stringify(formData));
         // alert("The profile image is successfully uploaded");
         // setImage("https://m2r31169.herokuapp.com" + response.data);
 
@@ -110,9 +109,9 @@ export default function AddType(props) {
           }
         }
         if (err.response) {
-          if (err.response.status == 406) alert("The type is already added  ");
+          if (err.response.status === 406) alert("The type is already added  ");
 
-          if (err.response.status == 400)
+          if (err.response.status === 400)
             alert("Please choose a valid image  ");
         } else {
           console.log(err);

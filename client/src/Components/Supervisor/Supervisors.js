@@ -8,7 +8,6 @@ import { lighten, makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
-
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
@@ -412,7 +411,6 @@ function Row(props) {
     }
     setOpen(!open);
 
-    console.log("opn  " + open);
   }
 
   return (
@@ -653,7 +651,6 @@ export default function Supervisors() {
   };
 
   function handleDelete(value) {
-    console.log("value aiaaaaaa " + value);
 
     // setLoading(true);
     let body = { id: value };
@@ -694,7 +691,7 @@ export default function Supervisors() {
   async function fetchTowns() {
     const townObj = [];
     axios.get("https://m2r31169.herokuapp.com/api/getTowns").then((res) => {
-      for (var i in res.data.Towns) {
+      for (let i in res.data.Towns) {
         if (res.data.Towns[i] !== "Select Town...") {
           townObj.push(res.data.Towns[i]);
         }
@@ -710,7 +707,7 @@ export default function Supervisors() {
   }, []);
 
   async function fetchData() {
-    var finalObj = [];
+    let finalObj = [];
     axios
       .get(
         "https://m2r31169.herokuapp.com/api/getAllSupervisorsTownAndStatistics",
@@ -721,8 +718,7 @@ export default function Supervisors() {
         }
       )
       .then((res) => {
-        console.log("suepr     " + JSON.stringify(userData));
-        for (var i in res.data.supervisors) {
+        for (let i in res.data.supervisors) {
           // finalObj.push(res.data);
           finalObj.push(res.data.supervisors[i]);
         }
@@ -734,7 +730,7 @@ export default function Supervisors() {
       })
       .catch((err) => {
         if (err.response) {
-          if (err.response.status == 400) {
+          if (err.response.status === 400) {
             setLoading(false);
           }
           if (err.response.status === 401 || err.response.status === 403) {
@@ -762,7 +758,6 @@ export default function Supervisors() {
   }
 
   useEffect(() => {
-    console.log("yaaa");
     fetchData();
   }, []);
 

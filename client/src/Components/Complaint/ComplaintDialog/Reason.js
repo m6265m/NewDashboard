@@ -33,11 +33,9 @@ export default function Reason(props) {
     axios
       .get("https://m2r31169.herokuapp.com/api/getRejectTags")
       .then((res) => {
-        console.log(res.data);
         for (var i in res.data.Reasons) {
           finalObj.push(res.data.Reasons[i]);
         }
-        console.log("Reject tags" + finalObj.toString());
         setReason(finalObj);
       })
       .catch((err) => {
@@ -67,7 +65,6 @@ export default function Reason(props) {
   }, []);
 
   const handleChange = (event) => {
-    console.log("target valyeeeeeeeeeeee" + event.target.value);
     setValues(event.target.value);
     changeValue(event.target.value);
   };

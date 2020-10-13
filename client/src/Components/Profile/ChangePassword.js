@@ -1,15 +1,11 @@
 import PropTypes from "prop-types";
 import LockIcon from "@material-ui/icons/Lock";
 import axios from "axios";
-
 import IconButton from "@material-ui/core/IconButton";
-
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import React, { useState, useEffect } from "react";
-
 import {
   Button,
   TextField,
@@ -22,7 +18,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -65,7 +60,6 @@ export default function ChangePassword(props) {
   const handleSaveClose = () => {
     // dialogClose();
     changePasswordApi();
-    console.log("yahan");
   };
 
   const changePasswordApi = () => {
@@ -85,7 +79,6 @@ export default function ChangePassword(props) {
         }
       )
       .then((res) => {
-        console.log("password updated" + res.data);
         dialogClose();
       })
       .catch((err) => {

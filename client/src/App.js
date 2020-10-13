@@ -4,7 +4,6 @@ import "./PagesCss/Dashboard.css";
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import ErrorPage from "./Pages/Error";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./Components/Routes/PrivateRoute";
 import PublicRoute from "./Components/Routes/PublicRoute";

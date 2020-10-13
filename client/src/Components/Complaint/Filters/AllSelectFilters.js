@@ -42,7 +42,7 @@ export default function Details(props) {
         filterValue={filterValue}
       />
 
-      {userData.Role == "ADMIN" && (
+      {userData.Role === "ADMIN" && (
         <SelectFilter
           name="supervisorName"
           orignalData={orignalData}
@@ -52,7 +52,7 @@ export default function Details(props) {
           filterValue={filterValue}
         />
       )}
-      {userData.Role == "ADMIN" && (
+      {userData.Role === "ADMIN" && (
         <SelectFilter
           name="otherStatus"
           orignalData={orignalData}

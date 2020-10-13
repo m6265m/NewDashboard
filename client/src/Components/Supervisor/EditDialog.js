@@ -8,9 +8,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import EditIcon from "@material-ui/icons/Edit";
-
 import CancelIcon from "@material-ui/icons/Cancel";
-
 import CircularProgress from "@material-ui/core/CircularProgress";
 import DialogActions from "@material-ui/core/DialogActions";
 import Paper from "@material-ui/core/Paper";
@@ -20,12 +18,10 @@ import PersonIcon from "@material-ui/icons/Person";
 import AddIcon from "@material-ui/icons/Add";
 import Typography from "@material-ui/core/Typography";
 import { blue } from "@material-ui/core/colors";
-
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Divider from "@material-ui/core/Divider";
 import InboxIcon from "@material-ui/icons/Inbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
-
 import { IconButton } from "@material-ui/core";
 import { ImpulseSpinner } from "react-spinners-kit";
 import Backdrop from "@material-ui/core/Backdrop";
